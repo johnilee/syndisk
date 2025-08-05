@@ -4,6 +4,24 @@ from astropy.io import fits
 from gofish import imagecube
 import numpy as np
 
+'''
+General usage:
+
+from syndisk import simulationcube
+
+cube = simulationcube('RT.fits')
+
+cube.synthetic_ALMA(bmaj=0.1,       # arcsec
+                    bmin=0.1,       # arcsec
+                    bpa=0.0, 
+                    rms=1e-5,       # Jy/beam in final image
+                    rescale=0.0, 
+                    filename='simRT.fits',   
+                    overwrite=True)
+'''
+
+
+
 
 class simulationcube(imagecube):
     """
