@@ -18,6 +18,15 @@ cube.synthetic_ALMA(bmaj=0.1,       # arcsec
                     rescale=0.0, 
                     filename='simRT.fits',   
                     overwrite=True)
+                    
+Note on rescaling rms values:
+
+For a given time on source t_on, you can rescale the rms for a 1hr observation following
+
+rms(t_on) = rms(1 hr) * (t_on [hrs] / 1 hour)^-1/2
+                    
+
+                    
 '''
 
 
@@ -50,7 +59,7 @@ class simulationcube(imagecube):
     def synthetic_ALMA(self, bmaj=None, bmin=None, bpa=0.0, rms=None,
                        chan=None, nchan=None, vcent=None,
                        dpix=None, npix=None, rescale=5.0,
-                       spectral_response=None, filename=None, overwrite=False):
+                       spectral_response=None, filename=None, factor=None, overwrite=False):
         """
         Generate synthetic ALMA observations by convolving the data spatially
         and spectrally and adding correlated noise. Will automatically convert
@@ -113,6 +122,10 @@ class simulationcube(imagecube):
                   + '({} x {} pixels).'.format(data.shape[-2], data.shape[-1]))
         axis = np.arange(npix) * dpix
         axis -= np.mean(axis)
+
+        # Rescale the input image by a factor
+        if factor:
+            data = data*factor
 
         # Define the new velocity axis. Should be centered about the same
         # central velocity as the input data.
