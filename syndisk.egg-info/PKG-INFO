@@ -1,0 +1,18 @@
+Metadata-Version: 2.4
+Name: syndisk
+Version: 0.0.1
+Summary: Tools to simulate observations of protoplanetary disks.
+Home-page: https://github.com/richteague/syndisk
+Author: Richard Teague
+Author-email: richard.d.teague@cfa.harvard.edu
+License-File: LICENSE.md
+Requires-Dist: numpy
+Requires-Dist: astropy
+Requires-Dist: scipy
+Requires-Dist: gofish
+Dynamic: author
+Dynamic: author-email
+Dynamic: home-page
+Dynamic: license-file
+Dynamic: requires-dist
+Dynamic: summary
